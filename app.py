@@ -1,12 +1,11 @@
 from flask import Flask
 from controllers import controllers as controllers_bp
 
-def create_app():
-    app = Flask(__name__)
-    app.register_blueprint(controllers_bp)
-    return app
+import os  # 👈 necesario para leer el puerto de Railway
 
-app = create_app()
+app = Flask(__name__)
+app.register_blueprint(controllers)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Railway asigna el puerto
+    app.run(host='0.0.0.0', port=port)        # host 0.0.0.0 para acceso público
