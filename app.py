@@ -1,5 +1,5 @@
 from flask import Flask
-from controllers import controllers as controllers_bp
+from controllers import controllers
 import os  # 👈 necesario para leer el puerto de Railway
 
 app = Flask(__name__)
